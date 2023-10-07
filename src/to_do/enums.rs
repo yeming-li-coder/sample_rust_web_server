@@ -2,7 +2,7 @@ use std::fmt::Display;
 
 pub enum TaskStatus {
     DONE,
-    PENDING
+    PENDING,
 }
 
 impl TaskStatus {
@@ -10,7 +10,15 @@ impl TaskStatus {
         match self {
             Self::DONE => "Done".to_string(),
             Self::PENDING => "Pending".to_string(),
-            _ => panic!()
+            _ => panic!(),
+        }
+    }
+
+    pub fn from_string(input_string: String) -> Self {
+        match input_string.as_str() {
+            "DONE" => TaskStatus::DONE,
+            "PENDING" => TaskStatus::PENDING,
+            _ => panic!("{} is not supported", input_string),
         }
     }
 }
