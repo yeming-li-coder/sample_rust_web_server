@@ -6,4 +6,10 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-serde_json = { version = "1.0.107" }
+serde_json = { version = "1.0" }
+actix-web = { version = "4.4.0", features = ["default", "openssl"] }
+# axum = { version = "0.6.20", features = ["headers", "http2", "macros", "multipart", "ws"]}
+# hyper = { version = "0.14.27", features = ["full"] }
+tokio = { version = "1.32.0", features = ["full"] }
+# tower = "0.4.13"
+# futures = "0.3.28"
