@@ -8,8 +8,11 @@ use serde_json::{Map, Value};
 pub fn read_file(file_name: &str) -> Map<String, Value> {
     let file = File::open(file_name).unwrap();
     let reader = BufReader::new(file);
-    let json: Value = serde_json::from_reader(reader).unwrap();
-    json.as_object().unwrap().clone()
+    if let Ok(json) = serde_json::from_reader::<_, Value>(reader) {
+        json.as_object().unwrap().clone()
+    } else {
+        Map::<String, Value>::new()
+    }
 }
 
 pub fn write_to_file(file_name: &str, state: &mut Map<String, Value>) {
